@@ -2,6 +2,10 @@
 {% import 'macros.html' as macro %}
 
 {% block content %}
+<form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Use source name to search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" value="Submit" type="submit">Search</button>
+</form>
 <ul>
     {{macro.displaySourceList(sources)}}
 </ul>

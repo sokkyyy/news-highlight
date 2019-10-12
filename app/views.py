@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template,request,redirect,url_for
 from app import app
 from .requests import get_sources,get_source_articles,get_article
 
@@ -10,7 +10,13 @@ def index():
     '''
     title = 'Home - Welcome to News Highlight'
     sources = get_sources()
-    return render_template('index.html',title=title ,sources=sources)
+
+    search_source = request.args.get('search')
+
+    if search_source:
+        return redirect(url_for('search',source_id=search_source))
+    else:
+        return render_template('index.html',title=title ,sources=sources)
 
 # Source News Articles
 @app.route('/source/<source_id>')
@@ -32,3 +38,12 @@ def content(source_id, article_title):
     article = get_article(source_id,article_title)
     title = f'{article.title}.'
     return render_template('content.html', title=title, article=article)
+
+# Search for source
+@app.route('/search/<source_id>')
+def search(source_id):
+    '''
+    '''
+    search_results = get_source_articles(source_id)
+    title = f'Search results for {source_id}'
+    return render_template('search.html', title=title, search=search_results)

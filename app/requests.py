@@ -55,7 +55,7 @@ def process_source_results(source_list):
 
 def get_source_articles(id):
     '''
-    Function to request to get the json response of source news articles.
+    Function to get the json response of source news articles.
     '''
     get_source_articles_url = source_articles_url.format(id,sources_api_key)
 
@@ -118,6 +118,8 @@ def get_article(id, article_title):
             article_object = article
     
     return article_object
+
+
 
 
 

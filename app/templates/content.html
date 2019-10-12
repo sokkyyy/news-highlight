@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>{{article.content}}</p>
+    
     <img src="{{article.image}}" alt="{{article.title}}">
+    <p>{{article.content|truncate(200)}}</p>
 {% endblock %}
