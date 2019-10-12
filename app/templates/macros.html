@@ -6,6 +6,6 @@
 
 {% macro displaySourceArticles(news_articles)%}
     {% for article in news_articles %}
-        <li>{{article.title}}</li>
+        <li><a href="/content/{{article.id}}/{{article.title}}">{{article.title}}-{{article.id}}</a></li>
     {% endfor %}
 {% endmacro %}

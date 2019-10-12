@@ -83,6 +83,7 @@ def process_articles_results(articles_list):
     articles_results = []
 
     for article in articles_list:
+        id = article['source'].get('id')
         author = article.get('author')
         title = article.get('title')
         description = article.get('description')
@@ -92,10 +93,32 @@ def process_articles_results(articles_list):
 
         # Initialize only if article has content
         if content and title:
-            article_object = Article(author,title,description,publishedAt,image,content)
+            article_object = Article(id,author,title,description,publishedAt,image,content)
             articles_results.append(article_object)
     
     return articles_results
+
+def get_article(id, article_title):
+    '''
+    Function that will request the json response of a news article.
+
+    Args:
+        id: The id of the source
+        article_title: The title of the specific news article.
+    
+    Returns:
+        article_object: Object of an article
+    '''
+    articles_results = get_source_articles(id)
+
+    article_object = None
+
+    for article in articles_results:
+        if article.title == article_title:
+            article_object = article
+    
+    return article_object
+
 
 
 
