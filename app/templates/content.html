@@ -3,5 +3,5 @@
 {% block content %}
     
     <img src="{{article.image}}" alt="{{article.title}}">
-    <p>{{article.content|truncate(200)}}</p>
+    <p>{{article.content|truncate(240)}}<a>(Read More)</a></p>
 {% endblock %}
