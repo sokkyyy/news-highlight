@@ -1,7 +1,10 @@
 import unittest
-from models import source 
+from models import source,news_article  
+import datetime
+
 
 Source = source.Source
+Article = news_article.News_Article
 
 class Source_Test(unittest.TestCase):
     '''
@@ -18,6 +21,20 @@ class Source_Test(unittest.TestCase):
         Test instance method to test if objects are iniatialized properly.
         '''
         self.assertTrue(isinstance(self.new_source, Source))
+
+class News_Article_Test(unittest.TestCase):
+    '''
+    News article test class to test the behavior of News Article class.
+    '''
+    def setUp(self):
+        '''
+        '''
+        self.new_article = Article("Ray","Superman's Metropolis", "efef efefe fefe fefe", datetime.date.today(),"","")
+    
+    def test_instance(self):
+        '''
+        '''
+        self.assertTrue(isinstance(self.new_article,Article))
 
 if __name__== '__main__':
     unittest.main()
