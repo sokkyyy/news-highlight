@@ -1,5 +1,8 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
 <ul>
-    {% for source_item in sources %}
-        <li>{{source_item.name}}</li>
-    {% endfor %}
+    {{macro.displaySourceList(sources)}}
 </ul>
+{% endblock %}
