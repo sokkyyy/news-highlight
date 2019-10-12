@@ -16,11 +16,17 @@ def index():
 @app.route('/source/<source_id>')
 def source(source_id):
     '''
-    View source news articles page that returns the news articles of a source.
+    View source news articles function that returns the news articles of a source.
     '''
     news_articles = get_source_articles(source_id)
     title = f'{source_id}'
     return render_template('source.html', title=title, news_articles=news_articles)
 
-# Content of News Article
-@app.route('/')
+# Read News Article
+@app.route('/read/<article_title>')
+def content(article_title):
+    '''
+    View content function that returns the news content of a source's news article.
+    '''
+    title = "Read"
+    return render_template('content.html', title=title)
