@@ -1,1 +1,5 @@
-<h1>{{sources}}</h1>
+<ul>
+    {% for source_item in sources %}
+        <li>{{source_item.name}}</li>
+    {% endfor %}
+</ul>
