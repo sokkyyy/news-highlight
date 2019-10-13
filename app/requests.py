@@ -1,6 +1,7 @@
 from app import app
 import urllib.request,json
 from .models import source,news_article
+import datetime
 
 Source = source.Source
 Article = news_article.News_Article
@@ -92,9 +93,13 @@ def process_articles_results(articles_list):
         content = article.get('content')
         url = article.get('url')
 
+        # Format Date to Readable format
+        if publishedAt: 
+            datePublished = format_date(publishedAt)
+
         # Initialize only if article has content
         if content and title:
-            article_object = Article(id,author,title,description,publishedAt,image,content,url)
+            article_object = Article(id,author,title,description,datePublished,image,content,url)
             articles_results.append(article_object)
     
     return articles_results
@@ -146,3 +151,16 @@ def search(query_string):
             search_results = process_articles_results(search_list)
     
     return search_results
+
+def format_date(date_string):
+    '''
+    Function to format the date to human readable.
+    '''
+    date_list = date_string.split('T')
+    date_format_list = date_list[0].split('-')
+
+    readable_date = datetime.datetime(int(date_format_list[0]), int(date_format_list[1]), int(date_format_list[2]))
+
+    return readable_date.strftime("%b %d %Y %H:%M:%S")
+
+
