@@ -2,13 +2,19 @@
 {% import 'macros.html' as macro %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <h3>Found {{search | count }} articles </h3>
-            <hr>
-            <ul>
-                {{ macro.displaySourceArticles(search) }}
-            </ul>
+    {% if search %}
+        <div class="container">
+            <div class="row">
+                <h3>Found {{search | count }} articles </h3>
+                <hr>
+                <ul>
+                    {{ macro.displaySourceArticles(search) }}
+                </ul>
+            </div>
         </div>
-    </div>
+    {% else %}
+        <div class="container">
+            <h4>No search results found for your request</h4>
+        </div>
+    {% endif %}
 {% endblock %}
