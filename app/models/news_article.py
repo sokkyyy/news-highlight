@@ -2,7 +2,7 @@ class News_Article:
     '''
     Class to create the news article instances. 
     '''
-    def __init__(self,id,author,title,description,publishedAt,image,content):
+    def __init__(self,id,author,title,description,publishedAt,image,content,url):
         '''
         '''
         self.id = id
@@ -12,3 +12,4 @@ class News_Article:
         self.publishedAt = publishedAt
         self.image = image
         self.content = content
+        self.url = url

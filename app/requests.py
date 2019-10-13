@@ -90,10 +90,11 @@ def process_articles_results(articles_list):
         publishedAt = article.get('publishedAt')
         image = article.get('urlToImage')
         content = article.get('content')
+        url = article.get('url')
 
         # Initialize only if article has content
         if content and title:
-            article_object = Article(id,author,title,description,publishedAt,image,content)
+            article_object = Article(id,author,title,description,publishedAt,image,content,url)
             articles_results.append(article_object)
     
     return articles_results

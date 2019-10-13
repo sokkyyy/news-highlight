@@ -29,7 +29,7 @@ class News_Article_Test(unittest.TestCase):
     def setUp(self):
         '''
         '''
-        self.new_article = Article("1","Ray","Superman's Metropolis", "efef efefe fefe fefe", datetime.date.today(),"","")
+        self.new_article = Article("1","Ray","Superman's Metropolis", "efef efefe fefe fefe", datetime.date.today(),"","","")
     
     def test_instance(self):
         '''
