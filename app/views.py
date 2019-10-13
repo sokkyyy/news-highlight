@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for
 from app import app
-from .requests import get_sources,get_source_articles,get_article
+from .requests import get_sources,get_source_articles,get_article,search
 
 # Home Page
 @app.route('/')
@@ -14,7 +14,7 @@ def index():
     search_source = request.args.get('search')
 
     if search_source:
-        return redirect(url_for('search',source_id=search_source))
+        return redirect(url_for('search_source',query_string=search_source)) 
     else:
         return render_template('index.html',title=title ,sources=sources)
 
@@ -39,11 +39,18 @@ def content(source_id, article_title):
     title = f'{article.title}.'
     return render_template('content.html', title=title, article=article)
 
+
 # Search for source
-@app.route('/search/<source_id>')
-def search(source_id):
+@app.route('/search/<query_string>')
+def search_source(query_string): 
     '''
+    View function to display search results.
     '''
-    search_results = get_source_articles(source_id)
-    title = f'Search results for {source_id}'
+    query_string_list = query_string.split(' ')
+    query_string_format = '+'.join(query_string_list)
+
+    search_results = search(query_string_format)
+    
+    title = f'Search results for {query_string}'
+    
     return render_template('search.html', title=title, search=search_results)

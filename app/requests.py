@@ -109,6 +109,7 @@ def get_article(id, article_title):
     Returns:
         article_object: Object of an article
     '''
+    
     articles_results = get_source_articles(id)
 
     article_object = None
@@ -121,8 +122,26 @@ def get_article(id, article_title):
 
 
 
+def search(query_string):
+    '''
+    Function to get the json response of articles using the query used,
 
+    Args: 
+        query_string: A string to be used as the search criteria.
+    
+    Returns:
+        search_results: A list of the articles found using the query string.
+    '''
+    search_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(query_string, sources_api_key)
 
+    with urllib.request.urlopen(search_url) as url:
+        search_data = url.read()
+        search_response = json.loads(search_data)
 
+        search_results = None
 
-
+        if search_response['articles']:
+            search_list = search_response['articles']
+            search_results = process_articles_results(search_list)
+    
+    return search_results
