@@ -158,8 +158,9 @@ def format_date(date_string):
     '''
     date_list = date_string.split('T')
     date_format_list = date_list[0].split('-')
+    time_format_list = date_list[1].split(':')
 
-    readable_date = datetime.datetime(int(date_format_list[0]), int(date_format_list[1]), int(date_format_list[2]))
+    readable_date = datetime.datetime(int(date_format_list[0]), int(date_format_list[1]), int(date_format_list[2]), int(time_format_list[0]), int(time_format_list[1]), 0)
 
     return readable_date.strftime("%b %d %Y %H:%M:%S")
 
