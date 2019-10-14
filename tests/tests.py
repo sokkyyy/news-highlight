@@ -1,10 +1,8 @@
 import unittest
-from models import source,news_article  
+from app.models import Source,News_Article  
 import datetime
 
 
-Source = source.Source
-Article = news_article.News_Article
 
 class Source_Test(unittest.TestCase):
     '''
@@ -29,12 +27,12 @@ class News_Article_Test(unittest.TestCase):
     def setUp(self):
         '''
         '''
-        self.new_article = Article("1","Ray","Superman's Metropolis", "efef efefe fefe fefe", datetime.date.today(),"","","")
+        self.new_article = News_Article("1","Ray","Superman's Metropolis", "efef efefe fefe fefe", datetime.date.today(),"","","")
     
     def test_instance(self):
         '''
         '''
-        self.assertTrue(isinstance(self.new_article,Article))
+        self.assertTrue(isinstance(self.new_article,News_Article))
 
-if __name__== '__main__':
-    unittest.main()
+# if __name__== '__main__':
+#    unittest.main()

@@ -1,17 +1,22 @@
-from app import app
+
 import urllib.request,json
-from .models import source,news_article
+from .models import Source, News_Article
 import datetime
 
-Source = source.Source
-Article = news_article.News_Article
 
-# Getting API key
-sources_api_key = app.config['NEW_API_KEY']
+# Getting news api key
+sources_api_key = None
+# Getting the news source
+sources_url = None
+source_articles_url = None 
 
-# Getting the sources base url
-sources_url = app.config['SOURCES_API_BASE_URL']
-source_articles_url = app.config['SOURCE_ARTICLES_BASE_URL']
+def configure_request(app):
+    global sources_api_key,sources_url,source_articles_url
+    sources_api_key = app.config['NEW_API_KEY']
+    sources_url = app.config['SOURCES_API_BASE_URL']
+    source_articles_url = app.config['SOURCE_ARTICLES_BASE_URL']
+
+
 
 def get_sources():
     '''
@@ -99,7 +104,7 @@ def process_articles_results(articles_list):
 
         # Initialize only if article has content
         if content and title:
-            article_object = Article(id,author,title,description,datePublished,image,content,url)
+            article_object = News_Article(id,author,title,description,datePublished,image,content,url)
             articles_results.append(article_object)
     
     return articles_results
