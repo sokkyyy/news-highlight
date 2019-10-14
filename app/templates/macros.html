@@ -1,3 +1,5 @@
+
+
 {% macro displaySourceList(source_list) %}
     <div class="container-fluid sources">
         <div class="row">
@@ -25,14 +27,14 @@
                     <div class="card articleCard">
 
                         <div class="card-header cardHeader">
-                            <h4>{{article.title}}</h4>
+                            <h4><a href="{{article.url}}">{{article.title}}</a></h4>
                         </div>
 
                         <img src="{{article.image}}" alt="{{article.title}}" class="card-img">
 
                         <div class="card-body cardBody" >
-                            <p>{{article.description}}....<a href="{{article.url}}">(Read More)</a> </p>
-                            <p>{{article.publishedAt}}</p>
+                            <p>{{article.description}}....<a href="{{article.url}}" class="readmore">(Read More)</a> </p>
+                            <p class="published">{{article.publishedAt}}</p>
                         </div>
                     </div>
                 </div>

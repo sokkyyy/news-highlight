@@ -1,5 +1,5 @@
 body {
-    background-color: #e71d36;
+    background-color: #c0babc;
 }
 .form {
     text-align: center;
@@ -12,7 +12,7 @@ body {
     width: 300px;
     border: 1px solid gray;
     border-radius: 15px;
-    background-color: #bdd9bf;
+    background-color: white;
 }
 
 
