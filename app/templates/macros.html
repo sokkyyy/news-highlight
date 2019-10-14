@@ -1,14 +1,14 @@
 {% macro displaySourceList(source_list) %}
-    <div class="container-fluid">
+    <div class="container-fluid sources">
         <div class="row">
             {% for source in source_list %}
-                <div class="col-sm-3" >
-                    <div class="card sourceCard" >
-                        <div class="card-header" style="background-color: bisque;">
+                <div class="col-sm-4 cardColor" >
+                    <div class="card sourceCard">
+                        <div class="card-header header">
                             <a href="/source/{{source.id}}">{{source.name}}</a>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-text">{{source.description}}</h5>
+                        <div class="card-body bodyCard">
+                            <h5 class="card-text">{{source.description| truncate(150)}}</h5>
                         </div>
                     </div>
                 </div>

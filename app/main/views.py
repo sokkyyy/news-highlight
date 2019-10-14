@@ -3,7 +3,6 @@ from . import main
 from ..requests import get_sources,get_source_articles,get_article,search
 
 
-
 # Home Page
 @main.route('/')
 def index():
@@ -15,12 +14,15 @@ def index():
 
     search_source = request.args.get('search')
 
-    if session['source']:
-        return redirect(url_for('.source', source_id=session['source'])) #Session redirect
-    elif search_source:
+    #session_variable = session.get('source')
+    #session.pop('source',None)
+
+    #if session_variable:   
+    #   return redirect(url_for('.source', source_id=session_variable))# Session redirect
+    if search_source:
         return redirect(url_for('.search_source',query_string=search_source)) 
     else:
-        return render_template('index.html',title=title ,sources=sources)
+        return render_template('index.html',title=title,sources=sources)
 
 # Source News Articles
 @main.route('/source/<source_id>')
@@ -33,7 +35,10 @@ def source(source_id):
     
     #Session for source
     session['source'] = source_id
+    
+    
     return render_template('source.html', title=title, news_articles=news_articles)
+
 
 # Read News Article
 @main.route('/content/<source_id>/<article_title>')
