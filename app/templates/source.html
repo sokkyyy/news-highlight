@@ -10,6 +10,10 @@
 <!--Content Block-->
 {% block content %}
     <ul>
-        {{macro.displaySourceArticles(news_articles)}}
+        {% if news_articles %}
+            {{macro.displaySourceArticles(news_articles)}}
+        {%else%}
+            <p>No News Articles for this Source. Select Other Sources.</p>
+        {% endif %}
     </ul>
 {% endblock %}

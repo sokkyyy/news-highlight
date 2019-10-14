@@ -1,6 +1,8 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for, session
 from . import main
 from ..requests import get_sources,get_source_articles,get_article,search
+
+
 
 # Home Page
 @main.route('/')
@@ -13,7 +15,9 @@ def index():
 
     search_source = request.args.get('search')
 
-    if search_source:
+    if session['source']:
+        return redirect(url_for('.source', source_id=session['source'])) #Session redirect
+    elif search_source:
         return redirect(url_for('.search_source',query_string=search_source)) 
     else:
         return render_template('index.html',title=title ,sources=sources)
@@ -26,6 +30,9 @@ def source(source_id):
     '''
     news_articles = get_source_articles(source_id)
     title = f'{source_id}'
+    
+    #Session for source
+    session['source'] = source_id
     return render_template('source.html', title=title, news_articles=news_articles)
 
 # Read News Article
