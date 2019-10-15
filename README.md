@@ -33,8 +33,8 @@ As a user I would like to:
 ### Cloning
 * In your terminal:
         
-        $ git clone ?
-        $ cd ?
+        $ git clone https://github.com/sokkyyy/news-highlight.git
+        $ cd news-highlight
 
 ## Running the Application
 * Creating the virtual environment
