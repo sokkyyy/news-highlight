@@ -5,10 +5,16 @@ body {
     text-align: center;
     padding-bottom: 50px;
 }
-
+.visit {
+    text-decoration: none;
+    color: #e71d36;
+}
+.visit:hover{
+    font-weight: bold;
+}
 .sourceCard {
     margin:5px;
-    height: 200px;
+    height: 220px;
     width: 300px;
     border: 1px solid gray;
     border-radius: 15px;
@@ -42,4 +48,7 @@ body {
 .bodyCard h5 {
     font-size: 17px;
     padding: 5px;
+}
+.bodyCard span {
+    padding-bottom: 10px;
 }
