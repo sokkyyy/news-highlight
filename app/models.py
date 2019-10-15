@@ -14,7 +14,7 @@ class Source:
         self.id = id
         self.name = name
         self.description = description
-
+ 
         
 class News_Article:
     '''

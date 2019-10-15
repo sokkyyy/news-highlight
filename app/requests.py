@@ -131,7 +131,7 @@ def get_article(id, article_title):
     
     return article_object
 
-
+ 
 
 def search(query_string):
     '''
